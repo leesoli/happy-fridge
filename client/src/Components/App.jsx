@@ -5,14 +5,11 @@ import Description from './Description.jsx'
 import RecipeList from './RecipeList.jsx'
 import RecipeDetails from './RecipeDetails.jsx'
 import Ingredients from "./Ingredients.jsx"
-// import clickedRecipeData from '../../../data/clickedRecipeData'
-import apiKey from '../../../config-copy.js'
 
 export default function App() {
   const [state, setState] = React.useState({
     view: "main",
     id: null,
-    // recipeData: clickedRecipeData,
     recipeData: {},
     recipeList: {},
     ingredients: [],
@@ -30,18 +27,31 @@ export default function App() {
         newIngredients.push(ingredient)
       }
     }
-    setState(prevState => ({
-      ...prevState,
-      ingredients: newIngredients
-    }))
+
+    let string = newIngredients.join(', ')
+
+    axios.get('/api/recipes', { params: { ingredients: string }})
+    .then((res) => {
+      setState(prevState => ({
+        ...prevState,
+        recipeList: {...res.data},
+        ingredients: newIngredients
+      }))
+    })
   }
 
   function changeView(view, id) {
-    setState(prevState => ({
-      ...prevState,
-      view,
-      id
-    }))
+    axios.get('/api/recipe', { params: { recipe: id}})
+      .then((res) => {
+        setState((prevState) => (
+          {
+            ...prevState,
+            view,
+            id,
+            recipeData: res.data
+          }
+        ))
+      })
   }
 
   function handleChange(event) {
@@ -55,18 +65,6 @@ export default function App() {
       } : value
     }))
   }
-
-  React.useEffect(() => {
-    let string = state.ingredients.join(", ")
-    console.log(string)
-
-    axios.get('/api/recipes', { params: { ingredients: string }})
-      .then((res) => {
-        console.log('res', res.data)
-      })
-
-  }, [state.ingredients])
-
 
   return (
     <div>

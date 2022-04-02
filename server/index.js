@@ -9,17 +9,28 @@ const axios = require('axios');
 server.use(express.static(path.join(__dirname, '../client/dist')))
 
 server.get('/api/recipes', (req, res) => {
-  console.log('req received')
-  // console.log('request', req)
-  // axios.get(config.recipeListUrl, {
-  //   params: {
-  //     apiKey: config.apiKey,
-  //     includeIngredients: req.query.ingredients,
-  //     sort: "min-missing-ingredients",
-  //     ignorePantry: true,
-  //     number: 8
-  //   }
-  // })
+
+  axios.get(config.recipeListUrl, {
+    params: {
+      apiKey: config.apiKey,
+      includeIngredients: req.query.ingredients,
+      sort: "min-missing-ingredients",
+      ignorePantry: true,
+      number: 8
+    }
+  }).then((data) => {
+    res.send(data.data)
+  })
+})
+
+server.get('/api/recipe', (req, res) => {
+  axios.get(`https://api.spoonacular.com/recipes/${req.query.recipe}/information`, {
+    params: {
+      apiKey: config.apiKey
+    }
+  }).then((data) => {
+   res.send(data.data)
+  })
 })
 
 
