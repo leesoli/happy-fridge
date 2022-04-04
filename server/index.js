@@ -16,7 +16,7 @@ server.get('/api/recipes', (req, res) => {
       includeIngredients: req.query.ingredients,
       sort: "min-missing-ingredients",
       ignorePantry: true,
-      number: 8
+      number: req.query.number
     }
   }).then((data) => {
     res.send(data.data)

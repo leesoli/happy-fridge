@@ -71,8 +71,7 @@ body {
  ====================================== */
 .page-description-info {
   font-family: 'Roboto', cursive;
-  max-width: 550px;
-  border: black solid 1px;
+  max-width: 500px;
   padding: 10px;
   background-color: white;
 }
@@ -81,12 +80,11 @@ body {
   font-weight: 400;
   font-size: 40px;
   margin: 0;
-  padding: 8px 0;
-  text-align: center;
+  padding: 12px 0;
 }
 
 .page-description {
-  font-size: 30px;
+  font-size: 25px;
   font-weight: 300;
   margin: 0;
 }
@@ -110,7 +108,7 @@ MainPage- Recipe list
 }
 
 .main-recipe-image {
-  width: 100%
+  width: 100%,
 }
 
 .main-recipe-title {
@@ -149,3 +147,61 @@ MainPage- Recipe list
   color: white;
   float: right;
  }
+
+
+
+/* ======================================
+
+
+ Recipe page
+
+
+ ====================================== */
+
+ .recipe-container {
+   display: flex;
+   flex-direction: row;
+ }
+
+ .recipe-image-wrapper {
+   min-width: 500px;
+ }
+
+ .recipe-image {
+  width: 100%
+}
+
+.recipe-info {
+  padding-left: 25px;
+}
+
+.recipe-title {
+  font-size: 45px;
+  font-weight: 400;
+  margin: 5px;
+}
+
+.recipe-details {
+  font-size: 25px;
+  padding-right: 20px;
+}
+
+.recipe-ingredients-wrapper, .recipe-directions-wrapper {
+  padding: 0px;
+}
+.recipe-ingredients-title, .recipe-directions-title {
+  font-size: 30px;
+  font-weight: 400;
+  margin: 20px 0;
+}
+
+.ingredient-list, .recipe-list {
+  margin: 0 0 10px 20px;
+  font-size: 25px;
+}
+
+.render-page {
+  display: flex;
+  flex-direction: row;
+  padding: 5px;
+}

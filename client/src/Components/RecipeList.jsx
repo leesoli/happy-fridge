@@ -1,21 +1,32 @@
 import React, { useState } from "react"
 import Recipe from './Recipe.jsx'
-// import List from '../../../data/sampleList'
 
 export default function(props) {
-  const [recipeList, setRecipeList] = useState(props.recipeList.results)
 
-  const recipeItem = recipeList.map(recipe => (<Recipe
-        key={recipe.id}
-        recipe={recipe}
-        changeView={props.changeView}
-        value={recipe.id}
-      />
-    ))
+  // let recipeItem = [];
+  // for (let i = 0; i < props.number; i++) {
+  //   recipeItem.push(<Recipe
+  //     key={recipeList[i].id}
+  //     recipe={recipeList[i]}
+  //     changeView={props.changeView}
+  //     value={recipeList[i].id}
+  //   />)
+  // }
+
+  const recipeItem = props.recipes.results.map(recipe => (<Recipe
+    key={recipe.id}
+    recipe={recipe}
+    changeView={props.changeView}
+    value={recipe.id}/>
+  ))
 
   return (
     <div className="recipe-wrapper">
       {recipeItem}
+      <button
+        onClick={props.handleShowMore}
+        className="show-more-button">Show More
+      </button>
     </div>
   )
 }
