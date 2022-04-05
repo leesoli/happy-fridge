@@ -1,12 +1,12 @@
 # What is Happy Fridge?
 
-With Happy Fridge, you can do your part in helping to reduce the environmental impact that food waste has on our climate. Happy Fridge provides a solution to reducing food waste by offering over 5000 recipes to its users. Just enter the ingredients you have on hand and we'll do the rest!
+With Happy Fridge, you can do your part to help reduce the environmental impact that food waste has on our climate. Happy Fridge provides a solution to reducing food waste by offering over 5,000 recipes to its users. Just enter the ingredients you have on hand and we'll do the rest!
 
 ## How to run locally
 ### Configuration 
 To run Happy Fridge locally, fork and clone this repository to your own local directory.
 
-You will need to use the [Spoonacular API](https://spoonacular.com/food-api/console#Dashboard) to generate a private key. After signing, find the API key in your console and insert private key in config.js file.
+You will need to use the [Spoonacular API](https://spoonacular.com/food-api/console#Dashboard) to generate a private key. After signing up, find the API key in your console and insert private key in config.js file.
 
 ### Start the server
 To start the server, run:
