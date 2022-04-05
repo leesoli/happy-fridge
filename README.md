@@ -17,9 +17,9 @@ npm build
 ```
 
 ## Navigating the Application
-In the center of the page, choose all the ingredients you have on hand with the exception of pantry items. There are different categories of ingredients. When you have made your selection, click the Submit button. 
+In the center of the page, you will be prompted to choose all the ingredients you have on hand with the exception of pantry items. Once you have made your selection, click the Submit button. 
 
-Based on the ingredients you have chosen, you will be given a list of recipes in order of the least additional ingredients needed. Click the show more button on the bottom to see additional recipes.
+Based on the ingredients you have chosen, you will be given a list of recipes in the order of the least additional ingredients needed. Click the show more button on the bottom to see additional recipes.
 
 
 
