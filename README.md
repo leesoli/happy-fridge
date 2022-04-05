@@ -6,7 +6,7 @@ With Happy Fridge, you can do your part in helping to reduce the environmental i
 ### Configuration 
 To run Happy Fridge locally, fork and clone this repository to your own local directory.
 
-You will need to use [Spoonacular API] (https://spoonacular.com/food-api/console#Dashboard) to generate a private key. After signing, find your API key in your console and insert private key in config.js file.
+You will need to use [Spoonacular API](https://spoonacular.com/food-api/console#Dashboard) to generate a private key. After signing, find your API key in your console and insert private key in config.js file.
 
 ### Start the server
 To start the server, run:
