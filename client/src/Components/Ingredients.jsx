@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function Ingredients(props) {
 
-const ingredients = Object.keys(props.ingredientOptions)
+const ingredients = Object.keys(props.vegetableOptions)
 
     const ingredient = ingredients.map(item => {
       return (
@@ -11,8 +11,8 @@ const ingredients = Object.keys(props.ingredientOptions)
             type="checkbox"
             id={item}
             onChange={props.handleChange}
-            checked={props.ingredientOptions[item]}
-            name="ingredientOptions"
+            checked={props.vegetableOptions[item]}
+            name="vegetableOptions"
           >
           </input>
           <label htmlFor={item}> {item}</label>

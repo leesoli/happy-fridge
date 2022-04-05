@@ -18,7 +18,7 @@ export default function App() {
 
     // create ingredient list for diff. categories of ingredients
     // dairy, eggs, fruit, excluding pantry
-    ingredientOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false}
+    vegetableOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false}
   })
 
   React.useEffect(() => {
@@ -29,8 +29,8 @@ export default function App() {
   function handleSubmit(e) {
     e.preventDefault();
     let newIngredients = [];
-    for (let ingredient in state.ingredientOptions) {
-      if (state.ingredientOptions[ingredient]) {
+    for (let ingredient in state.vegetableOptions) {
+      if (state.vegetableOptions[ingredient]) {
         newIngredients.push(ingredient)
       }
     }
@@ -93,7 +93,7 @@ export default function App() {
     setState(prevState => ({
       ...prevState,
       [name]: type === "checkbox" ? {
-        ...prevState.ingredientOptions,
+        ...prevState.vegetableOptions,
         [id]: checked
       } : value
     }))
@@ -107,7 +107,7 @@ export default function App() {
               <Ingredients
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
-                ingredientOptions={state.ingredientOptions} />
+                vegetableOptions={state.vegetableOptions} />
 
               {Object.keys(state.recipes).length > 0 &&
               <RecipeList

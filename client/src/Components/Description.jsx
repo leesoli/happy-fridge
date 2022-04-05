@@ -4,7 +4,7 @@ export default function Description() {
   return (
     <div className="page-description-info">
       <h3 className="page-description-title">What is Happy Fridge?</h3>
-      <p className="page-description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati molestiae eos autem, recusandae, iusto ducimus aliquam aliquid quaerat commodi quae cum. Fuga veniam aspernatur quasi autem cupiditate ducimus, voluptatum alias. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Maxime, repellendus sunt. Numquam eligendi sunt, laudantium vel quisquam quas fugit suscipit reprehenderit, blanditiis, ea rem dolor nisi iure corporis explicabo vero?
+      <p className="page-description">With Happy Fridge, you can do your part to help reduce the environmental impact that food waste has on our climate. Happy Fridge provides a solution to reducing food waste by offering over 5,000 recipes to its users. Just enter the ingredients you have on hand and we'll do the rest!
       </p>
     </div>
   )
