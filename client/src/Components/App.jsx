@@ -15,10 +15,10 @@ export default function App() {
     recipes: {},
     ingredientList: '',
     number: 8,
-
-    // create ingredient list for diff. categories of ingredients
-    // dairy, eggs, fruit, excluding pantry
-    vegetableOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false}
+    vegetableOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false, scallion: false, kale: false, cauliflower: false, cabbage: false, celery: false },
+    dairyAndEggOptions: { butter: false, eggs: false, milk: false, yogurt: false, cream: false, buttermilk: false },
+    fruitOptions: { strawberry: false, blueberry: false, orange: false, lemon: false, mango: false, coconut: false, apple: false, banana: false, watermelon: false, pineapple: false, peach: false, lime: false },
+    meatOptions: { bacon: false, beef: false, chicken: false, ham: false, pork: false, sausage: false, prosciutto: false, chorizo: false, salami: false, lamb: false, bison: false }
   })
 
   React.useEffect(() => {
@@ -29,8 +29,23 @@ export default function App() {
   function handleSubmit(e) {
     e.preventDefault();
     let newIngredients = [];
+    for (let ingredient in state.dairyAndEggOptions) {
+      if (state.dairyAndEggOptions[ingredient]) {
+        newIngredients.push(ingredient)
+      }
+    }
     for (let ingredient in state.vegetableOptions) {
       if (state.vegetableOptions[ingredient]) {
+        newIngredients.push(ingredient)
+      }
+    }
+    for (let ingredient in state.fruitOptions) {
+      if (state.fruitOptions[ingredient]) {
+        newIngredients.push(ingredient)
+      }
+    }
+    for (let ingredient in state.meatOptions) {
+      if (state.meatOptions[ingredient]) {
         newIngredients.push(ingredient)
       }
     }
@@ -93,7 +108,7 @@ export default function App() {
     setState(prevState => ({
       ...prevState,
       [name]: type === "checkbox" ? {
-        ...prevState.vegetableOptions,
+        ...prevState[name],
         [id]: checked
       } : value
     }))
@@ -107,7 +122,11 @@ export default function App() {
               <Ingredients
                 handleSubmit={handleSubmit}
                 handleChange={handleChange}
-                vegetableOptions={state.vegetableOptions} />
+                vegetableOptions={state.vegetableOptions}
+                dairyAndEggOptions={state.dairyAndEggOptions}
+                fruitOptions={state.fruitOptions}
+                meatOptions={state.meatOptions}
+                />
 
               {Object.keys(state.recipes).length > 0 &&
               <RecipeList

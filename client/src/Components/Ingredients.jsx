@@ -2,9 +2,12 @@ import React from 'react'
 
 export default function Ingredients(props) {
 
-const ingredients = Object.keys(props.vegetableOptions)
+const vegetableIngredients = Object.keys(props.vegetableOptions)
+const dairyAndEggIngredients = Object.keys(props.dairyAndEggOptions)
+const fruitIngredients = Object.keys(props.fruitOptions)
+const meatIngredients = Object.keys(props.meatOptions)
 
-    const ingredient = ingredients.map(item => {
+    const vegetableIngredient = vegetableIngredients.map(item => {
       return (
         <span className="ingredient-checkbox">
           <input
@@ -20,12 +23,73 @@ const ingredients = Object.keys(props.vegetableOptions)
       )
     })
 
+    const dairyAndEggIngredient = dairyAndEggIngredients.map(item => {
+      return (
+        <span className="ingredient-checkbox">
+          <input
+            type="checkbox"
+            id={item}
+            onChange={props.handleChange}
+            checked={props.dairyAndEggOptions[item]}
+            name="dairyAndEggOptions"
+          >
+          </input>
+          <label htmlFor={item}> {item}</label>
+        </span>
+      )
+    })
+
+    const fruitIngredient = fruitIngredients.map(item => {
+      return (
+        <span className="ingredient-checkbox">
+          <input
+            type="checkbox"
+            id={item}
+            onChange={props.handleChange}
+            checked={props.fruitOptions[item]}
+            name="fruitOptions"
+          >
+          </input>
+          <label htmlFor={item}> {item}</label>
+        </span>
+      )
+    })
+
+    const meatIngredient = meatIngredients.map(item => {
+      return (
+        <span className="ingredient-checkbox">
+          <input
+            type="checkbox"
+            id={item}
+            onChange={props.handleChange}
+            checked={props.meatOptions[item]}
+            name="meatOptions"
+          >
+          </input>
+          <label htmlFor={item}> {item}</label>
+        </span>
+      )
+    })
+
   return (
     <div className="ingredient-wrapper">
       <form onSubmit={props.handleSubmit}>
         <h3 className="ingredient-box-title">Choose Ingredients</h3>
         <div>
-          {ingredient}
+          <h4 className="ingredient-category-title">Vegetables</h4>
+          {vegetableIngredient}
+        </div>
+        <div>
+          <h4 className="ingredient-category-title">Fruit</h4>
+          {fruitIngredient}
+        </div>
+        <div>
+          <h4 className="ingredient-category-title">Meat</h4>
+          {meatIngredient}
+        </div>
+        <div>
+          <h4 className="ingredient-category-title">Dairy and Eggs</h4>
+          {dairyAndEggIngredient}
         </div>
       <button className="ingredient-submit-button">Submit</button>
       </form>

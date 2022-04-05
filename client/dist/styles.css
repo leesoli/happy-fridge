@@ -102,6 +102,10 @@ MainPage- Recipe list
   padding-top: 20px;
 }
 
+.show-more-button {
+  float: right
+}
+
 .main-recipe {
   margin: 15px;
   font-weight: 300;
@@ -130,15 +134,24 @@ MainPage- Recipe list
    display: flex;
  }
 
- .ingredient-box-title {
+ .ingredient-box-title, .ingredient-category-title {
    margin: 0px;
+   font-size: 35px;
+   font-weight: 500;
+ }
+
+ .ingredient-category-title {
+   font-size: 30px;
+   margin-top: 15px;
+   font-weight: 400;
  }
 
  .ingredient-checkbox {
-   padding: 10px 20px 0px 0px;;
+   padding: 10px 20px 0px 0px;
+   font-size: 25px;
  }
 
- .ingredient-submit-button {
+ .ingredient-submit-button, .show-more-button {
   line-height: 21px;
   padding: 12px 30px;
   font-size: 30px;
