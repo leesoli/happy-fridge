@@ -4,23 +4,47 @@ import Search from './Search.jsx'
 import Description from './Description.jsx'
 import RecipeList from './RecipeList.jsx'
 import RecipeDetails from './RecipeDetails.jsx'
-import Ingredients from "./Ingredients.jsx"
-
+import Ingredients from './Ingredients.jsx'
+import SignUp from './SignUp.jsx'
 
 export default function App() {
   const [state, setState] = React.useState({
-    view: "main",
+    view: "signUp",
     id: null,
     recipeData: {},
     recipes: {},
-    ingredientList: '',
-    ingredientInput: '',
+    ingredientList: "",
+    ingredientInput: "",
     number: 8,
     vegetableOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false, scallion: false, kale: false, cauliflower: false, cabbage: false, celery: false },
     dairyAndEggOptions: { butter: false, eggs: false, milk: false, yogurt: false, cream: false, buttermilk: false },
     fruitOptions: { strawberry: false, blueberry: false, orange: false, lemon: false, mango: false, coconut: false, apple: false, banana: false, watermelon: false, pineapple: false, peach: false, lime: false },
-    meatOptions: { bacon: false, beef: false, chicken: false, ham: false, pork: false, sausage: false, prosciutto: false, chorizo: false, salami: false, lamb: false, bison: false }
+    meatOptions: { bacon: false, beef: false, chicken: false, ham: false, pork: false, sausage: false, prosciutto: false, chorizo: false, salami: false, lamb: false, bison: false },
+    userInfo: { firstName: "", lastName: "", birthDate: "", email: "", password: "", confirmationPassword: "", receiveNewsletter: false }, favoritedRecipes: {},
+    userData: {},
   })
+
+  function submitUserInfo(e) {
+    e.preventDefault();
+    const { firstName, lastName, birthDate, email, password, confirmationPassword, receiveNewsletter } = state.userInfo
+    const entries = Object.values(state.userInfo)
+
+    if (password !== confirmationPassword) {
+      console.log('Password does not match.')
+    } else {
+      for (var i = 0; i < entries.length; i++) {
+        const entry = entries[i]
+        if (entry === '') {
+          console.log('Please complete form.')
+          return;
+        }
+      }
+    }
+      console.log('Your account has been created!!')
+      if (receiveNewsletter) {
+        console.log('Thanks for signing up for our newsletter!')
+      }
+  }
 
   React.useEffect(() => {
     getRecipeList()
@@ -50,7 +74,7 @@ export default function App() {
       }
     }
 
-    let ingredients = newIngredients.join(', ')
+    let ingredients = newIngredients.join(", ")
 
     // setState(prevState => ({
     //   ...prevState,
@@ -91,15 +115,26 @@ export default function App() {
   }
 
   function getRecipe(id) {
-    axios.get('/api/recipe', { params: { recipe: id}})
+    axios.get("/api/recipe", { params: { recipe: id}})
       .then((res) => {
         setState((prevState) => ({
             ...prevState,
-            view: 'recipe',
+            view: "recipe",
             id,
             recipeData: res.data
         }))
       })
+  }
+
+  function handleUserInfo(event) {
+    const {name, value, type, checked} = event.target
+    setState(prevState => ({
+      ...prevState,
+      userInfo: {
+        ...prevState.userInfo,
+        [name]: type === "checkbox" ? checked: value
+      }
+    }))
   }
 
   function handleChange(event) {
@@ -121,7 +156,7 @@ export default function App() {
   }
 
   function renderPage() {
-    if (state.view === 'main') {
+    if (state.view === "main") {
       return (
           <main className="main-page">
             <div>
@@ -144,14 +179,22 @@ export default function App() {
             </div>
           </main>
       )
-    } else if (state.view === 'recipe') {
+    } else if (state.view === "recipe") {
       return (
         <div>
-          {state.view === 'recipe' &&
+          {state.view === "recipe" &&
           <RecipeDetails
             recipeId={state.id}
             recipeData={state.recipeData}/>}
         </div>
+      )
+    } else if (state.view === "signUp") {
+      return (
+        <SignUp
+        userInfo={state.userInfo}
+        submitUserInfo={submitUserInfo}
+        handleUserInfo={handleUserInfo}
+        />
       )
     }
   }
@@ -171,7 +214,11 @@ export default function App() {
           <li className="list-items-logo">Happy Fridge</li>
         </ul>
         <ul className="navbar">
-          <li className="list-items">sign up</li>
+          <li
+          className="list-items"
+          onClick={() => changeView("signUp")}
+          handleChange={handleChange}
+          >sign up</li>
           <li className="list-items">sign in</li>
         </ul>
       </nav>
