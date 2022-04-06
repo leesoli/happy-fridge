@@ -14,6 +14,7 @@ export default function App() {
     recipeData: {},
     recipes: {},
     ingredientList: '',
+    ingredientInput: '',
     number: 8,
     vegetableOptions: { garlic: false, onion: false, tomato: false, potato: false, mushroom: false, avocado: false, carrots: false, broccoli: false, corn: false, romaine: false, squash: false, bokchoy: false, jalapeno: false, scallion: false, kale: false, cauliflower: false, cabbage: false, celery: false },
     dairyAndEggOptions: { butter: false, eggs: false, milk: false, yogurt: false, cream: false, buttermilk: false },
@@ -25,6 +26,7 @@ export default function App() {
     getRecipeList()
   }, [state.ingredientList, state.number])
 
+  console.log(state.ingredientList)
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -60,7 +62,7 @@ export default function App() {
 
     setState(prevState => ({
       ...prevState,
-      ingredientList: ingredients
+      ingredientList: prevState.ingredientInput ? prevState.ingredientInput.concat(",", ingredients) : ingredients
     }))
   }
 
@@ -131,6 +133,7 @@ export default function App() {
               {Object.keys(state.recipes).length > 0 &&
               <RecipeList
                 changeView={changeView}
+                handleChange={handleChange}
                 // number={state.number}
                 recipes={state.recipes}
                 handleShowMore={handleShowMore}/>}

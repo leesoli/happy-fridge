@@ -91,6 +91,12 @@ const meatIngredients = Object.keys(props.meatOptions)
           <h4 className="ingredient-category-title">Dairy and Eggs</h4>
           {dairyAndEggIngredient}
         </div>
+        <h3>Not finding your ingredients? Input each ingredient below with a "," comma in between</h3>
+        <textarea
+          name="ingredientInput"
+          onChange={props.handleChange}
+        >
+        </textarea>
       <button className="ingredient-submit-button">Submit</button>
       </form>
     </div>
