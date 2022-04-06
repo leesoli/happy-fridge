@@ -151,7 +151,7 @@ MainPage- Recipe list
    font-size: 25px;
  }
 
- .ingredient-submit-button, .show-more-button {
+ .ingredient-search-button, .show-more-button {
   line-height: 21px;
   padding: 12px 30px;
   font-size: 30px;

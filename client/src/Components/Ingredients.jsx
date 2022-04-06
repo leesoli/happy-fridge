@@ -16,8 +16,7 @@ const meatIngredients = Object.keys(props.meatOptions)
             onChange={props.handleChange}
             checked={props.vegetableOptions[item]}
             name="vegetableOptions"
-          >
-          </input>
+          />
           <label htmlFor={item}> {item}</label>
         </span>
       )
@@ -32,8 +31,7 @@ const meatIngredients = Object.keys(props.meatOptions)
             onChange={props.handleChange}
             checked={props.dairyAndEggOptions[item]}
             name="dairyAndEggOptions"
-          >
-          </input>
+          />
           <label htmlFor={item}> {item}</label>
         </span>
       )
@@ -48,8 +46,7 @@ const meatIngredients = Object.keys(props.meatOptions)
             onChange={props.handleChange}
             checked={props.fruitOptions[item]}
             name="fruitOptions"
-          >
-          </input>
+          />
           <label htmlFor={item}> {item}</label>
         </span>
       )
@@ -64,8 +61,7 @@ const meatIngredients = Object.keys(props.meatOptions)
             onChange={props.handleChange}
             checked={props.meatOptions[item]}
             name="meatOptions"
-          >
-          </input>
+          />
           <label htmlFor={item}> {item}</label>
         </span>
       )
@@ -91,13 +87,14 @@ const meatIngredients = Object.keys(props.meatOptions)
           <h4 className="ingredient-category-title">Dairy and Eggs</h4>
           {dairyAndEggIngredient}
         </div>
-        <h3>Not finding your ingredients? Input each ingredient below with a "," comma in between</h3>
+        <h3>Not finding your ingredients in the list? Input any additional ingredients below using a "," (comma) in between</h3>
         <textarea
+          placeholder="Don't forget to include a comma in between each ingredient!"
           name="ingredientInput"
           onChange={props.handleChange}
-        >
-        </textarea>
-      <button className="ingredient-submit-button">Submit</button>
+          value={props.ingredientInput}
+        />
+      <button className="ingredient-search-button">Search</button>
       </form>
     </div>
   )

@@ -26,8 +26,6 @@ export default function App() {
     getRecipeList()
   }, [state.ingredientList, state.number])
 
-  console.log(state.ingredientList)
-
   function handleSubmit(e) {
     e.preventDefault();
     let newIngredients = [];
@@ -92,12 +90,12 @@ export default function App() {
     }))
   }
 
-  function changeView(view, id) {
+  function getRecipe(id) {
     axios.get('/api/recipe', { params: { recipe: id}})
       .then((res) => {
         setState((prevState) => ({
             ...prevState,
-            view,
+            view: 'recipe',
             id,
             recipeData: res.data
         }))
@@ -106,13 +104,19 @@ export default function App() {
 
   function handleChange(event) {
     const {name, id, value, type, checked} = event.target
-
     setState(prevState => ({
       ...prevState,
       [name]: type === "checkbox" ? {
         ...prevState[name],
         [id]: checked
       } : value
+    }))
+  }
+
+  function changeView(page) {
+    setState(prevState => ({
+      ...prevState,
+      view: page
     }))
   }
 
@@ -132,7 +136,7 @@ export default function App() {
 
               {Object.keys(state.recipes).length > 0 &&
               <RecipeList
-                changeView={changeView}
+                getRecipe={getRecipe}
                 handleChange={handleChange}
                 // number={state.number}
                 recipes={state.recipes}
@@ -154,15 +158,16 @@ export default function App() {
 
   return (
     <div>
-      <header
-        className="main-page-header"
-        onClick={() => changeView("main")}>
+      <header className="main-page-header">
         <h1 className="main-page-title">Happy Fridge</h1>
       </header>
 
       <nav className="navbar-container">
         <ul className="navbar">
-          <li className="list-items">home</li>
+          <li
+            className="list-items"
+            onClick={() => changeView("main")}
+          >home</li>
           <li className="list-items-logo">Happy Fridge</li>
         </ul>
         <ul className="navbar">

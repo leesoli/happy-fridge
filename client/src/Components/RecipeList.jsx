@@ -16,7 +16,7 @@ export default function(props) {
   const recipeItem = props.recipes.results.map(recipe => (<Recipe
     key={recipe.id}
     recipe={recipe}
-    changeView={props.changeView}
+    getRecipe={props.getRecipe}
     value={recipe.id}/>
   ))
 

@@ -17,6 +17,6 @@ npm build
 ```
 
 ## Navigating the Application
-In the center of the page, you will be prompted to choose all the ingredients you have on hand with the exception of pantry items. Once you have made your selection, click the Submit button.
+In the center of the page, you will be prompted to choose all the ingredients you have on hand with the exception of pantry items. Not finding the ingredients? Input any additional ingredients in the text box below placing a comma in between each ingredient. Once you have made your selection, click the Search button.
 
 Based on the ingredients you have chosen, you will be given a list of recipes in the order of the least additional ingredients needed. Click the show more button on the bottom to see additional recipes.

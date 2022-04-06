@@ -3,8 +3,7 @@ import React from "react"
 export default function(props) {
   return (
     <div className="main-recipe"
-
-      onClick={(event) => props.changeView("recipe", props.value)}
+      onClick={(event) => props.getRecipe(props.value)}
     >
 
       <img className="main-recipe-image" src={props.recipe.image} />
